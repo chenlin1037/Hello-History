@@ -13,6 +13,10 @@ import (
 )
 
 func main() {
+	// 静态文件服务
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fs)
+	
 	// 三个 API 处理程序
 	http.HandleFunc("/translate", handleTranslate)
 	http.HandleFunc("/translateFromHtml", handleTranslateFromHtml)
